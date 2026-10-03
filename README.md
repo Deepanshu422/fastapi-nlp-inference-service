@@ -4,6 +4,22 @@ An asynchronous, containerized NLP inference microservice built with **FastAPI**
 
 The service provides optimized endpoints for zero-shot text classification and token-level Named Entity Recognition (NER). It uses a singleton memory registry pattern to preload transformer models on startup, eliminating cold-start latency during inference requests.
 
+### 📌 Interactive Endpoint Previews
+
+#### Zero-Shot Classification (`POST /classify`)
+
+| Request Payload | Model Response |
+| :---: | :---: |
+| ![Zero-Shot Request](images/assets/Zero-shot-Req.png) | ![Zero-Shot Response](images/assets/Zero-shot-Resp.png) |
+| *Input text with target candidate labels* | *Prediction scores and latency* |
+
+#### Named Entity Recognition (`POST /extract`)
+
+| Request Payload | Extracted Entities |
+| :---: | :---: |
+| ![NER Request](images/assets/NER-Req.png) | ![NER Response](images/assets/NER-Resp.png) |
+| *Input paragraph with confidence threshold* | *Identified entities with boundary tags* |
+
 ---
 
 ## 🚀 Key Features
@@ -107,5 +123,6 @@ Response Body:JSON{
   }
 }
 
-3.  Health & Readiness ProbesLiveness: GET /health/live — Returns 200 OK if the web service process is active.
+3.  Health & Readiness Probes
+    Liveness: GET /health/live — Returns 200 OK if the web service process is active.
     Readiness: GET /health/ready — Returns 200 OK once both models are completely loaded into RAM.
