@@ -1,0 +1,23 @@
+# Ignore Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Ignore virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Ignore git data & local IDE configs
+.git/
+.gitignore
+.idea/
+.vscode/
+
+# Ignore test & coverage caches
+.pytest_cache/
+.coverage
+htmlcov/

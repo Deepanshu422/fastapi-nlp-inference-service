@@ -1,0 +1,20 @@
+services:
+  nlp-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: production_nlp_pipeline
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DEVICE=-1
+      - MAX_INPUT_TEXT_LENGTH=2000
+    volumes:
+      # Persists downloaded Hugging Face models on host machine
+      - ./model_cache:/app/.cache/huggingface
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
